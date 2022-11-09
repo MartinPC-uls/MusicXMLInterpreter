@@ -305,7 +305,7 @@ namespace MusicXML_Parser
             return measure;
         }
 
-        public void AddNote(int staff, string note, int? alter, int octave, Note noteType, XmlNode measure)
+        public void AddNote(int staff, string note, int? alter, int octave, NoteType noteType, XmlNode measure)
         {
             if (Score == null)
                 throw new Exception("Score is null");
@@ -371,7 +371,7 @@ namespace MusicXML_Parser
             Score.Save(FileName);
         }
 
-        public string GetNoteType(Note note)
+        public string GetNoteType(NoteType note)
         {
             switch (note.ToString())
             {

@@ -3,7 +3,7 @@ using System.Xml;
 using MusicXML_Parser.Music;
 
 //MusicTest musicTest = new MusicTest();
-SheetConfiguration sheet = new SheetConfiguration()
+/*SheetConfiguration sheet = new SheetConfiguration()
 {
     WorkTitle = "Test",
     Composer = "Martín Pizarro",
@@ -32,23 +32,13 @@ XmlNode node = score.SelectSingleNode("score-partwise/part[@id='P1']");
 XmlNode measure = sheet.AddMeasure(node);
 
 string[] notes = new string[7] { "C", "D", "E", "F", "G", "A", "B" };
-Note[] _notes = new Note[2] { Note.HALF, Note.QUARTER };
+NoteType[] _notes = new NoteType[2] { NoteType.HALF, NoteType.QUARTER };
 
 var rand = new Random();
 for (int i = 1; i <= 20; i++)
 {
     sheet.AddNote(1, notes[rand.Next(0, 7)], null, 5, _notes[rand.Next(0, 2)], measure);
-}
-/*sheet.AddNote(1, "C", null, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "D", null, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "E", -1, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "F", null, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "G", null, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "A", null, 5, Note.QUARTER, measure);
-sheet.AddNote(1, "B", -1, 5, Note.QUARTER, measure);*/
-/*
-sheet.Backup(measure);
-sheet.AddNote(2, "C", null, 3, Note.QUARTER, measure);
-sheet.AddNote(2, "D", null, 3, Note.QUARTER, measure);
-sheet.AddNote(2, "E", -1, 3, Note.QUARTER, measure);
-sheet.AddNote(2, "F", null, 3, Note.QUARTER, measure);*/
+}*/
+
+SheetReader sheet = new SheetReader(@"C:\Users\ghanv\OneDrive\Escritorio\score.xml");
+sheet.PrintNotes();
