@@ -80,7 +80,9 @@ namespace MusicXML_Parser
         public void PrintSpecificNote(MusicXml.Domain.Note note)
         {
             if (note.IsRest)
-                Console.WriteLine("[REST, _, " + note.Duration + ", _]");
+            {
+                //Console.WriteLine("[REST, _, " + note.Duration + ", _]");
+            }
             else
             {
                 //Console.WriteLine("[" + GetSpecificNote(note) + ", " + note.Pitch.Octave + ", " + note.Duration + ", " + note.IsChordTone + "] | " + note.Staff);
