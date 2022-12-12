@@ -40,7 +40,7 @@ namespace MusicXML_Parser
 
         public SheetConfiguration()
         {
-            
+            initialize_arrays();
         }
 
         public XmlDocument Init(string fileName, Key? key = null)
@@ -303,6 +303,92 @@ namespace MusicXML_Parser
             Score.Save(FileName);
 
             return measure;
+        }
+
+        public char[] ascii = Enumerable.Range(32, 120).Select(i => (char)i).ToArray();
+
+        public string[] notes;
+        public Dictionary<string, int> note_map;
+        public Dictionary<int, string> note_map_reverse;
+
+        public void initialize_arrays()
+        {
+            notes = new string[88];
+            notes[0] = "A0";
+            notes[1] = "A#0";
+            notes[2] = "B0";
+            string[] base_notes = new string[12];
+            base_notes[0] = "C";
+            base_notes[1] = "C#";
+            base_notes[2] = "D";
+            base_notes[3] = "D#";
+            base_notes[4] = "E";
+            base_notes[5] = "F";
+            base_notes[6] = "F#";
+            base_notes[7] = "G";
+            base_notes[8] = "G#";
+            base_notes[9] = "A";
+            base_notes[10] = "A#";
+            base_notes[11] = "B";
+
+            int octave = 1;
+            for (int j = 3, z = 0; j < notes.Length; j++, z++)
+            {
+                if (base_notes[z].Equals("B"))
+                {
+                    notes[j] = base_notes[z] + octave;
+                    octave += 1;
+                    z = -1;
+                    continue;
+                }
+                notes[j] = base_notes[z] + octave;
+            }
+
+            note_map = new Dictionary<string, int>();
+            note_map_reverse = new Dictionary<int, string>();
+            for (int i = 0; i < notes.Length; i++)
+            {
+                Console.WriteLine(notes[i] + ", " + (i + 32));
+                note_map.Add(notes[i], i + 32);
+                note_map_reverse.Add(i + 32, notes[i]);
+            }
+
+        }
+
+        public void Add(char ascii, int staff, XmlNode measure)
+        {
+            string note;
+            int? alter;
+            int octave;
+            NoteType noteType;
+
+            int index = (int)ascii;
+            /*if (index >= 120)
+                index = 119;*/
+            char character = this.ascii[index];
+
+            // get string note from ascii note_map
+            note = note_map_reverse[index];
+
+            Console.WriteLine("note: " + note);
+
+            if (note[note.Length - 2].Equals('#'))
+                alter = 1;
+            else
+                alter = null;
+            octave = int.Parse(note[note.Length - 1].ToString());
+
+            noteType = NoteType.QUARTER;
+
+            note = note[0].ToString();
+
+            if (octave <= 3)
+            {
+                Backup(measure, 96);
+                staff = 2;
+            } // watch this
+            
+            AddNote(staff, note, alter, octave, noteType, measure);
         }
 
         public void AddNote(int staff, string note, int? alter, int octave, NoteType noteType, XmlNode measure)

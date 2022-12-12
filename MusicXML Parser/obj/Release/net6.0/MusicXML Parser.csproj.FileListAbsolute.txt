@@ -1,0 +1,18 @@
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXML Parser.exe
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXML Parser.deps.json
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXML Parser.runtimeconfig.json
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXML Parser.dll
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXML Parser.pdb
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXml.dll
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\bin\Release\net6.0\MusicXml.pdb
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.csproj.AssemblyReference.cache
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.AssemblyInfoInputs.cache
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.AssemblyInfo.cs
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.csproj.CoreCompileInputs.cache
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.csproj.CopyComplete
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.dll
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\refint\MusicXML Parser.dll
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.pdb
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\MusicXML Parser.genruntimeconfig.cache
+C:\Users\ghanv\source\repos\MusicXML Parser\MusicXML Parser\obj\Release\net6.0\ref\MusicXML Parser.dll

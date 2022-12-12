@@ -40,5 +40,5 @@ for (int i = 1; i <= 20; i++)
     sheet.AddNote(1, notes[rand.Next(0, 7)], null, 5, _notes[rand.Next(0, 2)], measure);
 }*/
 
-SheetReader sheet = new SheetReader(@"C:\Users\ghanv\OneDrive\Escritorio\score.xml");
-sheet.PrintNotes();
+SheetReader sheet = new SheetReader(@"C:\Users\ghanv\OneDrive\Escritorio\estrellita_donde_estas.xml");
+sheet.SaveNotes();

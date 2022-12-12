@@ -19,6 +19,8 @@ namespace MusicXML_Parser
         public Part Part;
         public List<MusicXml.Domain.MeasureElement> elements = new List<MusicXml.Domain.MeasureElement>();
 
+        public static List<char?> DataSet;
+
         public string[] notes;
         public Dictionary<string, int> note_map;
 
@@ -26,6 +28,7 @@ namespace MusicXML_Parser
         public char[] ascii = Enumerable.Range(0, 128).Select(i => (char)i).ToArray();
         public SheetReader(string file)
         {
+            DataSet = new();
             File = file;
             Score = MusicXml.MusicXmlParser.GetScore(File);
             GetNotes();
@@ -60,14 +63,51 @@ namespace MusicXML_Parser
                     PrintSpecificNote(note);
                 } else if (element.Type == MeasureElementType.Forward)
                 {
-                    Forward forward = (Forward)element.Element;
-                    Console.WriteLine("forward: " + forward.Duration);
+                    //Forward forward = (Forward)element.Element;
+                    //Console.WriteLine("forward: " + forward.Duration);
                 } else if (element.Type == MeasureElementType.Backup)
                 {
-                    Backup backup = (Backup)element.Element;
-                    Console.WriteLine("backup: " + backup.Duration);
+                    //Backup backup = (Backup)element.Element;
+                    //Console.WriteLine("backup: " + backup.Duration);
                 }
             
+            }
+        }
+        public void SaveNotes()
+        {
+            initialize_arrays();
+            Console.WriteLine("Initialiazing process...");
+            int p = 0;
+            foreach (MeasureElement element in elements)
+            {
+                char? _note = null;
+                if (element.Type == MeasureElementType.Note)
+                {
+                    MusicXml.Domain.Note note = (MusicXml.Domain.Note)element.Element;
+                    _note = GetNote(note);
+                }
+                else if (element.Type == MeasureElementType.Forward)
+                {
+                    //Forward forward = (Forward)element.Element;
+                    //Console.WriteLine("forward: " + forward.Duration);
+                }
+                else if (element.Type == MeasureElementType.Backup)
+                {
+                    //Backup backup = (Backup)element.Element;
+                    //Console.WriteLine("backup: " + backup.Duration);
+                }
+                DataSet.Add(_note);
+                p++;
+                Console.WriteLine("Processing: " + p/elements.Count*100 + "%");
+            }
+            System.IO.File.Create(AppDomain.CurrentDomain.BaseDirectory + "dataset.txt").Close();
+            // write DataSet into dataset.txt
+            using var sw = new StreamWriter("dataset.txt");
+            
+            for (int i = 0; i < DataSet.Count; i++)
+            {
+                Console.WriteLine("Writing: " + i / (DataSet.Count - 1) * 100 + "%");
+                sw.Write(DataSet[i]);
             }
         }
         public char translate(string note, int octave, int duration, bool isChord)
@@ -88,6 +128,13 @@ namespace MusicXML_Parser
                 //Console.WriteLine("[" + GetSpecificNote(note) + ", " + note.Pitch.Octave + ", " + note.Duration + ", " + note.IsChordTone + "] | " + note.Staff);
                 print(translate(GetSpecificNote(note), note.Pitch.Octave, note.Duration, note.IsChordTone), false);
             }
+        }
+        public char GetNote(MusicXml.Domain.Note note)
+        {
+            if (!note.IsRest)
+                return translate(GetSpecificNote(note), note.Pitch.Octave, note.Duration, note.IsChordTone);
+
+            return ' ';
         }
         public void print(object? s, bool skipLine = true)
         {
